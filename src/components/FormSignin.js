@@ -27,6 +27,7 @@ const FormSignup = ({ setIsLogged}) => {
           position: "top-right",
           duration: 5000,
           isClosable: true,
+          
         })
       } 
       

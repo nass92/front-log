@@ -12,7 +12,20 @@ const FormSignup = ({ setTabIndex}) => {
     try {
       if (data.password !== data.password2) {
         throw new Error("the passwords are not the same please retry")
+      } 
+      if (!data.username) {
+        throw new Error("username required")
+      } 
+      if (!data.email) {
+        throw new Error("Email required")
+      } else if (!/\S+@\S+\.\S+/.test(data.email)) {
+        throw new Error("Email address is invalid")
       }
+      if (!data.password) {
+        throw new Error("Password is required")
+      } else if (data.password.length < 6) {
+        throw new Error("Password needs to be 6 characters or more")
+      } 
 console.log(data)
       const response = await axios({
       method: 'post',
@@ -46,7 +59,7 @@ console.log(data)
   } 
   return (
     <div className='form-content-right'>
-      <form onSubmit={handleSubmit(handleSubmitButton)}className='form' noValidate>
+      <form onSubmit={handleSubmit(handleSubmitButton)}className='form' >
         <h1>
           Get started with us today! Create your account by filling out the
           information below.
