@@ -12,7 +12,7 @@ const FormSignup = ({ setIsLogged}) => {
       try {
         const response = await axios({
         method: 'post',
-        url: 'http://localhost:7777/Log',
+        url: 'http://localhost:7777/log',
         data: {
           username: data.username,
           password: data.password
@@ -20,7 +20,17 @@ const FormSignup = ({ setIsLogged}) => {
       });
       if (response.data.logged) {
         setIsLogged(true)
-      } else {
+        toast({
+          title: 'Connected',
+          description: `${response.data}`,
+          status: 'success',
+          position: "top-right",
+          duration: 5000,
+          isClosable: true,
+        })
+      } 
+      
+      else {
         throw new Error(response.data)
       }
       

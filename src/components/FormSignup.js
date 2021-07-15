@@ -2,7 +2,7 @@ import React from 'react';
 import validate from '../Hooks/Validate';
 import { useForm } from "react-hook-form";
 import './Form.css';
-import {axios} from 'axios'
+import axios from 'axios'
 import { useToast } from "@chakra-ui/react"
 const FormSignup = ({ setTabIndex}) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -14,10 +14,10 @@ const FormSignup = ({ setTabIndex}) => {
       if (data.password !== data.password2) {
         throw new Error("the passwords are not the same please retry")
       }
-
+console.log(data)
       const response = await axios({
       method: 'post',
-      url: 'http://localhost:7777/register',
+      url: 'http://localhost:7777/Register',
       data: {
         username: data.username,
         email: data.email,
@@ -59,7 +59,7 @@ const FormSignup = ({ setTabIndex}) => {
             type='text'
             name='username'
             placeholder='Enter your username'
-            isrequired {...register("username")}
+            isRequired {...register("username")}
           />
           {errors.username && <p>{errors.username}</p>}
         </div>
@@ -70,7 +70,7 @@ const FormSignup = ({ setTabIndex}) => {
             type='email'
             name='email'
             placeholder='Enter your email'
-            isrequired {...register("email")}
+            isRequired {...register("email")}
           />
           {errors.email && <p>{errors.email}</p>}
         </div>
@@ -81,7 +81,7 @@ const FormSignup = ({ setTabIndex}) => {
             type='password'
             name='password'
             placeholder='Enter your password'
-            isrequired {...register("password")}
+            isRequired  {...register("password")}
           />
           {errors.password && <p>{errors.password}</p>}
         </div>
@@ -92,7 +92,7 @@ const FormSignup = ({ setTabIndex}) => {
             type='password'
             name='password2'
             placeholder='Confirm your password'
-            isrequired {...register("password2")}
+            isRequired {...register("password2")}
           />
           {errors.password2 && <p>{errors.password2}</p>}
         </div>
