@@ -1,5 +1,4 @@
 import React from 'react';
-import validate from '../Hooks/Validate';
 import { useForm } from "react-hook-form";
 import './Form.css';
 import axios from 'axios'
